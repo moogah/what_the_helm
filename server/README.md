@@ -54,4 +54,8 @@ helm install helm-chart --generate-name
 kubectl describe services
 
 
+
+
 - Step 5: split service into backend-service (ClusterIP) and frontend-service (NodePort)
+
+backend-service:8080/my_endpoint
