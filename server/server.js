@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 // Constants
-const PORT = 8080; // todo: use env var
+const PORT = process.env.PORT;
 
 // App
 const app = express();

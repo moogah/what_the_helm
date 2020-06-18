@@ -31,12 +31,24 @@ kubectl describe services
 kubectl run -it --rm --restart=Never alpine --image=alpine sh (from https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)
 wget -O- helm-chart-1592441184:8080
 
--- run container to wget -O- service-name
+curl http://localhost:30001/my_endpoint
 
 
 
 
 - Step 3: add client.js and use docker-compose to build and run 
+docker-compose build
+docker-compose up
+❯ curl http://localhost:8080
+OK%                                                                                                                                 ❯ curl http://localhost:8081
+OK%
+
+docker push moogah/wth_server:latest
+docker push moogah/wth_client:latest
+
+
+
+
 - Step 4: split `image` section into client and server to deploy
 -- use kubectl and container to explore
 - Step 5: split service into backend-service (ClusterIP) and frontend-service (NodePort)

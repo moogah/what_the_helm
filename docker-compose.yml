@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  server:
+    image: moogah/wth_server:latest
+    environment:
+      - PORT=8080
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+  client:
+    image: moogah/wth_client:latest
+    environment:
+      - PORT=8081
+      - CLIENT_MESSAGE="Hello this is client"
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
