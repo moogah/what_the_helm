@@ -50,5 +50,9 @@ docker push moogah/wth_client:latest
 
 
 - Step 4: split `image` section into client and server to deploy
+helm install helm-chart --generate-name
+kubectl describe services
+
+
 -- use kubectl and container to explore
 - Step 5: split service into backend-service (ClusterIP) and frontend-service (NodePort)
