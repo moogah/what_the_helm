@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  repository: moogah/wth_server
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart version.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -37,8 +37,10 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+  type: NodePort
+  port: 8080
+  targetPort: 8080
+  nodePort: 30001 # The range of valid ports is 30000-32767
 
 ingress:
   enabled: false
