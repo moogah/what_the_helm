@@ -50,6 +50,36 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        - name: nodeclient
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.nodeclient.repository }}"
+          imagePullPolicy: {{ .Values.nodeclient.pullPolicy }}
+          env:
+            - name: PORT
+              value: "8081"
+            - name: BACKEND_SERVICE
+              value: "{{ .Values.backend_service.name }}"
+            - name: BACKEND_PORT
+              value: "{{ .Values.backend_service.port }}"
+            - name: CLIENT_MESSAGE
+              value: "Hello from the client"
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

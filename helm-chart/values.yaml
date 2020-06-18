@@ -43,8 +43,8 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 8080
-  targetPort: 8080
+  port: 8081
+  targetPort: 8081
   nodePort: 30001 # The range of valid ports is 30000-32767
 
 backend_service:
