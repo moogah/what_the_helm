@@ -10,6 +10,11 @@ image:
   # Overrides the image tag whose default is the chart version.
   tag: "latest"
 
+nodeclient:
+  repository: moogah/wth_client
+  pullPolicy: Always
+  tag: "latest"
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -41,6 +46,12 @@ service:
   port: 8080
   targetPort: 8080
   nodePort: 30001 # The range of valid ports is 30000-32767
+
+backend-service:
+  name: backend-service
+  type: ClusterIP
+  targetPort: 8080 # give to container on port 8080
+  port: 8080 # pod listening on port 8080
 
 ingress:
   enabled: false
